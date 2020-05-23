@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import uniqueId from 'lodash.uniqueid';
-import {Container, FormControl, Grid, InputLabel, MenuItem, Select, Theme} from '@material-ui/core';
+import {Container, FormControl, Grid, MenuItem, Select, Theme} from '@material-ui/core';
 import {makeStyles, createStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -43,7 +43,7 @@ export default function TypeSelect(
                 const key = uniqueId();
                 return price
                     ? <MenuItem key={key} value={price}>{title}</MenuItem>
-                    : <MenuItem key={key} aria-label="None" value={price}><em>None</em></MenuItem>
+                    : <MenuItem key={key} aria-label="None" value={price}><em>Ничего не выбрано</em></MenuItem>
             }),
         [dataItem]
     )
@@ -52,9 +52,7 @@ export default function TypeSelect(
         <Container disableGutters>
             <Grid className={classes.title} container alignItems="flex-start">{mainTitle}</Grid>
             <FormControl className={classes.formControl}>
-                <InputLabel id={labelId}>{SelectTitle}</InputLabel>
                 <Select
-                    labelId={labelId}
                     value={type}
                     onChange={handleChange}
                     inputProps={{

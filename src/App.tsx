@@ -7,6 +7,7 @@ import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {getWidthTape} from "./helper/getWidthTape";
 import {onMatchWidth} from "./helper/matchTape";
 import {isMax} from "./helper/isMax";
+import TotalTable from "./components/TotalTable";
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -73,9 +74,6 @@ function App() {
     useEffect(() => {
         if(getPrice) {
             setPrice(getPrice);
-        }
-
-        if (getTape) {
             setTape(getTape);
         }
     },[getWidth, getPrice, getTape]);
@@ -124,8 +122,8 @@ function App() {
             return (parseFloat(getCountPriceOfTape) + parseInt(getCountPriceOfMount)).toFixed(2);
         }
 
-        setAmountPerMount(getCountPriceOfTape);
-        setAmountPerTape(getCountPriceOfMount);
+        setAmountPerMount(getCountPriceOfMount);
+        setAmountPerTape(getCountPriceOfTape);
         setSum(getCountSum);
 
         setCountChange(true);
@@ -205,27 +203,13 @@ function App() {
                         </Button>
                     }
                 </Grid>
-                  {countChange &&
-                      <Grid item xs={12} md={6}>
-                          <Grid>
-                              <Typography gutterBottom variant="body1" component="p">
-                                  {`${amountPerMount} грн. цена за ленту`}
-                              </Typography>
-                          </Grid>
-                          <Grid>
-                              <Typography gutterBottom variant="body1" component="p">
-                                  {`${amountPerTape} грн. цена за крепление `}
-                              </Typography>
-                          </Grid>
-                      </Grid>
-                  }
              </Grid>
                 {countChange &&
-                    <Grid>
-                        <Typography variant="h6" component="p">
-                            {`${amountPerMount} + ${amountPerTape} = ${sum} грн. цена готового изделия`}
-                        </Typography>
-                    </Grid>
+                    <TotalTable
+                        amountPerMount={amountPerMount}
+                        amountPerTape={amountPerTape}
+                        sum={sum}
+                    />
                 }
             </Grid>
           </Paper>

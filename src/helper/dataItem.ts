@@ -1,5 +1,5 @@
 export const dataMenuItem = [
-    { price: 0, title: 'None'},
+    { price: 0, title: 'Выберите тип ленты'},
     { price: '68,', title: '200 х 2 мм (стандарт)' },
     { price: '69,', title: '200 х 2 мм (стандарт ребро)' },
     { price: '98,1', title: '300 х 2 мм (стандарт)' },
@@ -15,7 +15,7 @@ export const dataMenuItem = [
 ];
 
 export const dataMount = [
-    { price: 0, title: 'None' },
+    { price: 0, title: 'Выберите тип крепления' },
     { price: 280, title: 'Оцинковка' },
     { price: 360, title: 'Нержавейка' },
 ]
@@ -25,16 +25,16 @@ export const dataMatchTapes = [
     {widthTape: 0.6, twenty: 4, thirty: 3},
     {widthTape: 0.7, twenty: 5, thirty: 4},
     {widthTape: 0.8, twenty: 5, thirty: 4},
-    {widthTape: 0.9, twenty: 4, thirty: 4},
+    {widthTape: 0.9, twenty: 6, thirty: 4},
     {widthTape: 1.0, twenty: 6, thirty: 4},
-    {widthTape: 1.1, twenty: 6, thirty: 5},
+    {widthTape: 1.1, twenty: 7, thirty: 5},
     {widthTape: 1.2, twenty: 7, thirty: 5},
-    {widthTape: 1.3, twenty: 7, thirty: 6},
-    {widthTape: 1.4, twenty: 8, thirty: 6},
-    {widthTape: 1.5, twenty: 9, thirty: 7},
+    {widthTape: 1.3, twenty: 8, thirty: 6},
+    {widthTape: 1.4, twenty: 9, thirty: 6},
+    {widthTape: 1.5, twenty: 10, thirty: 7},
     {widthTape: 1.6, twenty: 10, thirty: 7},
-    {widthTape: 1.7, twenty: 10, thirty: 8},
-    {widthTape: 1.8, twenty: 11, thirty: 8},
+    {widthTape: 1.7, twenty: 11, thirty: 8},
+    {widthTape: 1.8, twenty: 12, thirty: 8},
     {widthTape: 1.9, twenty: 12, thirty: 8},
     {widthTape: 2.0, twenty: 13, thirty: 9},
     {widthTape: 2.1, twenty: 13, thirty: 9},
