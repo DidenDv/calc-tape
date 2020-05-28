@@ -11,12 +11,6 @@ const useStyles = makeStyles({
     root: {
         marginTop: 20
     },
-    table: {
-        minWidth: 460,
-    },
-    cell: {
-        fontWeight: 'bold',
-    }
 });
 
 interface propsTotalTable {
@@ -30,20 +24,28 @@ export default function TotalTable({ amountPerMount, amountPerTape, sum }: props
 
     return (
         <TableContainer className={classes.root} component={Paper}>
-            <Table className={classes.table} aria-label="spanning table">
+            <Table aria-label="spanning table">
                 <TableBody>
                     <TableRow>
-                        <TableCell colSpan={2}>Цена за ленту</TableCell>
-                        <TableCell align="right">{`${amountPerTape} грн`}</TableCell>
+                        <TableCell>Цена за ленту</TableCell>
+                        <TableCell style={{
+                            whiteSpace: "nowrap"
+                        }} align="right">{`${amountPerTape} грн`}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Цена за крепление</TableCell>
-                        <TableCell align="right">{`${amountPerMount} грн`}</TableCell>
+                        <TableCell>Цена за крепление</TableCell>
+                        <TableCell style={{
+                            whiteSpace: "nowrap"
+                        }} align="right">{`${amountPerMount} грн`}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell className={classes.cell}>Цена готового изделия</TableCell>
-                        <TableCell className={classes.cell} align="right">{amountPerTape} + {amountPerMount}</TableCell>
-                        <TableCell className={classes.cell} align="right">{`${sum} грн`}</TableCell>
+                        <TableCell style={{
+                            fontWeight: 'bold'
+                        }}>Цена готового изделия</TableCell>
+                        <TableCell style={{
+                            fontWeight: 'bold',
+                            whiteSpace: "nowrap"
+                        }} align="right">{`${sum} грн`}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
