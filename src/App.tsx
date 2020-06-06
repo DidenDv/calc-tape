@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Container, Grid, Typography, Button, Paper} from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Container, Grid, Typography, Button, Paper } from '@material-ui/core';
 import TypeSelect from './components/TypeSelect';
 import RangeSlider from "./components/RangeSlider";
-import {dataMenuItem, dataMatchTapes, dataMount} from './helper/dataItem';
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {getWidthTape} from "./helper/getWidthTape";
-import {onMatchWidth} from "./helper/matchTape";
-import {isMax} from "./helper/isMax";
+import { dataMenuItem, dataMatchTapes, dataMount, dataCurrency } from './helper/dataItem';
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { getWidthTape } from "./helper/getWidthTape";
+import { onMatchWidth } from "./helper/matchTape";
+import { isMax } from "./helper/isMax";
 import TotalTable from "./components/TotalTable";
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -34,6 +34,7 @@ function App() {
         typeOfMount: 0,
     });
 
+    const [currency, setCurrency] = useState<number>(0);
     const [heightRange, setHeightRange] = useState<number>(1.8);
     const [widthRange, setWidthRange] = useState<number>(0.6);
 
@@ -70,6 +71,13 @@ function App() {
 
     const getPrice = getWidth[0];
     const getTape = getWidth[1];
+
+
+
+    useEffect(()=> {
+        setCurrency(dataCurrency);
+    },[setCurrency, currency]);
+
 
     useEffect(() => {
         if(getPrice) {
@@ -108,7 +116,9 @@ function App() {
 
         const countPriceOfTape = () => {
             const getCountMetres = countMetres();
-            return (parseFloat(getCountMetres)*parseInt(price)).toFixed(2);
+            const course = Math.round(parseFloat(price)*currency);
+
+            return (parseFloat(getCountMetres)*course).toFixed(2);
         }
 
         const countPriceOfMount = () => {
@@ -118,8 +128,9 @@ function App() {
 
         const getCountPriceOfTape = countPriceOfTape();
         const getCountPriceOfMount = countPriceOfMount();
+
         const getCountSum = () => {
-            return (parseFloat(getCountPriceOfTape) + parseInt(getCountPriceOfMount)).toFixed(2);
+            return (parseFloat(getCountPriceOfTape) + parseInt(getCountPriceOfMount));
         }
 
         setAmountPerMount(getCountPriceOfMount);

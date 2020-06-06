@@ -28,9 +28,11 @@ export default function TotalTable({ amountPerMount, amountPerTape, sum }: props
                 <TableBody>
                     <TableRow>
                         <TableCell>Цена за ленту</TableCell>
-                        <TableCell style={{
+                        <TableCell
+                            style={{
                             whiteSpace: "nowrap"
-                        }} align="right">{`${amountPerTape} грн`}</TableCell>
+                        }}
+                            align="right">{`${amountPerTape} грн`}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>Цена за крепление</TableCell>
